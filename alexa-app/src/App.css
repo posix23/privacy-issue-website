@@ -1,6 +1,8 @@
 .App {
-  text-align: start;
   background-color: #37475a;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .App-header {
@@ -15,10 +17,6 @@
   color: #ffffff;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 hr {
   color:#ffffff;
   display: block;
@@ -27,10 +25,7 @@ hr {
   background-color: #ffffff;
 }
 
-p {
-  color: #ffffff;
-  min-height: 100vh;
-  justify-content: flex-start;
-  flex-direction: row;
-  padding-left: 100px;
+main {
+  margin-left: 10%;
+  margin-right: 10%;
 }
