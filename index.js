@@ -1,20 +1,18 @@
 const express = require("express");
 const app = express();
 
-const encrypted = require('text/encrypted.txt');
-const unencrypted = require('text/unencrypted.txt');
-const tos = require('text/tos.txt');
+const everything = require('./text/everything.json');
 
 app.get("/encrypted", (req, res) => {
-  res.send(encrypted);
+  res.json(everything.encrypted);
 });
 
 app.get("/unencrypted", (req, res) => {
-  res.send(unencrypted);
+  res.json(everything.unencrypted);
 });
 
 app.get("/tos", (req, res) => {
-  res.send(tos);
+  res.json(everything.tos);
 });
 
 const PORT = process.env.PORT || 8000;
