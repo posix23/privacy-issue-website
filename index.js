@@ -1,17 +1,18 @@
 const express = require("express");
 const app = express();
+const cors = require('cors');
 
 const everything = require('./text/everything.json');
 
-app.get("/encrypted", (req, res) => {
+app.get("/encrypted", cors(), (req, res) => {
   res.json({ "encrypted": everything.encrypted });
 });
 
-app.get("/unencrypted", (req, res) => {
+app.get("/unencrypted", cors(), (req, res) => {
   res.json({ "unecnrypted": everything.unencrypted });
 });
 
-app.get("/tos", (req, res) => {
+app.get("/tos", cors(), (req, res) => {
   res.json({ "tos": everything.tos });
 });
 
