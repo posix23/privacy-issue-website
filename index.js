@@ -4,15 +4,15 @@ const app = express();
 const everything = require('./text/everything.json');
 
 app.get("/encrypted", (req, res) => {
-  res.json(everything.encrypted);
+  res.json({ "encrypted": everything.encrypted });
 });
 
 app.get("/unencrypted", (req, res) => {
-  res.json(everything.unencrypted);
+  res.json({ "unecnrypted": everything.unencrypted });
 });
 
 app.get("/tos", (req, res) => {
-  res.json(everything.tos);
+  res.json({ "tos": everything.tos });
 });
 
 const PORT = process.env.PORT || 8000;
