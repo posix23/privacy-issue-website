@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/privacy-issue-website/static/css/main.e51db3cc.chunk.css",
-    "main.js": "/privacy-issue-website/static/js/main.5869ba76.chunk.js",
-    "main.js.map": "/privacy-issue-website/static/js/main.5869ba76.chunk.js.map",
+    "main.js": "/privacy-issue-website/static/js/main.ce4cb4fd.chunk.js",
+    "main.js.map": "/privacy-issue-website/static/js/main.ce4cb4fd.chunk.js.map",
     "runtime-main.js": "/privacy-issue-website/static/js/runtime-main.27aedb4e.js",
     "runtime-main.js.map": "/privacy-issue-website/static/js/runtime-main.27aedb4e.js.map",
     "static/js/2.69f2b85c.chunk.js": "/privacy-issue-website/static/js/2.69f2b85c.chunk.js",
     "static/js/2.69f2b85c.chunk.js.map": "/privacy-issue-website/static/js/2.69f2b85c.chunk.js.map",
     "index.html": "/privacy-issue-website/index.html",
-    "precache-manifest.086ffc97545e833650cbd12a606d67db.js": "/privacy-issue-website/precache-manifest.086ffc97545e833650cbd12a606d67db.js",
+    "precache-manifest.e7451c64c32b4d2fc02eda54f64541f0.js": "/privacy-issue-website/precache-manifest.e7451c64c32b4d2fc02eda54f64541f0.js",
     "service-worker.js": "/privacy-issue-website/service-worker.js",
     "static/css/main.e51db3cc.chunk.css.map": "/privacy-issue-website/static/css/main.e51db3cc.chunk.css.map",
     "static/js/2.69f2b85c.chunk.js.LICENSE.txt": "/privacy-issue-website/static/js/2.69f2b85c.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.27aedb4e.js",
     "static/js/2.69f2b85c.chunk.js",
     "static/css/main.e51db3cc.chunk.css",
-    "static/js/main.5869ba76.chunk.js"
+    "static/js/main.ce4cb4fd.chunk.js"
   ]
 }

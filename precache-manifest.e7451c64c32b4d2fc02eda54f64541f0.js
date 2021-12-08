@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5d79e25e7333d93e8d46c45805a49e59",
+    "revision": "5ce3ba56fbd88369d9e90fe85d09146f",
     "url": "/privacy-issue-website/index.html"
   },
   {
-    "revision": "c9852f0ff801e5c80c1c",
+    "revision": "cb69e754fe089ff2f83e",
     "url": "/privacy-issue-website/static/css/main.e51db3cc.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/privacy-issue-website/static/js/2.69f2b85c.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "c9852f0ff801e5c80c1c",
-    "url": "/privacy-issue-website/static/js/main.5869ba76.chunk.js"
+    "revision": "cb69e754fe089ff2f83e",
+    "url": "/privacy-issue-website/static/js/main.ce4cb4fd.chunk.js"
   },
   {
     "revision": "4ea3b81110883710ff6a",
