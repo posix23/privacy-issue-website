@@ -35,7 +35,7 @@ function App() {
       })
       .catch(console.error);
 
-    console.log("You must be truly desperate to come to me for help. It is fine if you want to inspect elements and try to change it to access our content. You must be a very smart individual to even think of this way. :)");
+    console.log("You must be truly desperate to come to me for help. It is fine if you want to inspect elements and try to change it to access our content. You must be a very smart individual to even think of this way. Anyway, to access the hidden content, look for the element with id of \"essay\" and remove the class \"d-none\". Sorry for wasting your time. :)");
   }, []);
 
   useEffect(() => {
