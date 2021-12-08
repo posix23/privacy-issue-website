@@ -8,7 +8,7 @@ function App() {
   let url = 'https://gentle-beach-11167.herokuapp.com/', timeOut = false;
 
   const [clicked, setClicked] = useState(false);
-  const [seconds, setSeconds] = useState(10);
+  const [seconds, setSeconds] = useState(60*60);
 
   // Run once at the start
   useEffect(() => {
@@ -18,9 +18,14 @@ function App() {
       .catch(console.error);
   }, []);
 
+  // Event for closing Terms of Service page
   const closeTOS = () => {
     id("tos-box").classList.add("d-none");
     id("essay").classList.remove("d-none");
+    fetch(url + 'unencrypted')
+      .then(resp => resp.json())
+      .then(data => id("essay").innerHTML = data.unencrypted)
+      .catch(console.error);
   };
 
   useEffect(() => {
@@ -91,7 +96,7 @@ function App() {
       </main>
 
       <footer>
-        <p>Copyrighted © 2021 - Toan Ly, Luke Dorsett, Ryan Muggett</p>
+        <p>Copyrighted © 2021 - Toan Ly, Luke Dorsett, Ryan Mudgett</p>
       </footer>
     </div>
   );

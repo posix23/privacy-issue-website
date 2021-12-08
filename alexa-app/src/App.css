@@ -43,7 +43,6 @@ main, footer {
 #tos-box {
   margin-left: 20%;
   margin-right: 20%;
-  z-index: 50;
   border: 2px black solid;
   padding: 5%;
   background-color: white;
