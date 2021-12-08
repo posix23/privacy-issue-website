@@ -14,7 +14,14 @@
   justify-content: flex-start;
   padding-top: 10vh;
   font-size: calc(20px + 2vmin);
-  color: #ffffff;
+}
+
+.App-header, footer {
+  color: white;
+}
+
+.App-header, hr, footer {
+  background-color: #e47911;
 }
 
 hr {
@@ -22,10 +29,29 @@ hr {
   display: block;
   height: 3px;
   width: 50%;
-  background-color: #ffffff;
 }
 
 main {
   margin-left: 10%;
   margin-right: 10%;
+}
+
+main, footer {
+  margin-top: 1%;
+}
+
+#tos-box {
+  margin-left: 20%;
+  margin-right: 20%;
+  z-index: 50;
+  border: 2px black solid;
+  padding: 5%;
+  background-color: white;
+}
+
+footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
 }

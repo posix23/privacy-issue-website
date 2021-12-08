@@ -1,18 +1,57 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './App.css';
 
 import { id } from './lib/utilities';
 
 function App() {
-  let url = ''; // URL for encrypted essay
+  let url = 'https://gentle-beach-11167.herokuapp.com/', timeOut = false;
+
+  const [clicked, setClicked] = useState(false);
+  const [seconds, setSeconds] = useState(10);
 
   // Run once at the start
   useEffect(() => {
-    fetch(url)
+    fetch(url + 'encrypted')
       .then(resp => resp.json())
-      .then(data => id("essay").innerHTML = data);
+      .then(data => id("essay").innerHTML = data.encrypted)
+      .catch(console.error);
   }, []);
+
+  const closeTOS = () => {
+    id("tos-box").classList.add("d-none");
+    id("essay").classList.remove("d-none");
+  };
+
+  useEffect(() => {
+    let interval = null;
+    interval = setInterval(() => {
+      setSeconds(seconds => seconds - 1);
+    }, 1000);
+    if (seconds === 0) {
+      clearInterval(interval);
+      timeOut = true;
+      if (!id("alert-time").classList.contains("d-none")) id("alert-time").classList.add("d-none");
+      if (clicked) closeTOS();
+    }
+
+    return () => clearInterval(interval);
+  }, [seconds]);
+
+  useEffect(() => {
+    fetch('https://gentle-beach-11167.herokuapp.com/tos')
+      .then(resp => resp.json())
+      .then(data => {
+        id("tos").innerHTML = data.tos;
+        id("click-here").addEventListener("click", closeTOS);
+      })
+      .catch(console.error);
+  }, []);
+
+  const checkHandler = () => {
+    if (id("agree").checked && id("pp-agree").checked) id("submit").classList.remove("d-none");
+    else id("submit").classList.add("d-none");
+  }
 
   return (
     <div className="App">
@@ -21,28 +60,39 @@ function App() {
         <hr></hr>
       </header>
 
-      <br></br>
-
       <main>
-        <div id="essay">
-          What is Lorem Ipsum?
-Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+        <div id="tos-box" className="d-flex flex-column">
+          <div id="tos"></div>
 
-Why do we use it?
-It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
-
-Where does it come from?
-Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
-
-The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.
-
-Where can I get some?
-There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc.
+          <div className="d-flex flex-column justify-content-center">
+            <form>
+                <label htmlFor="tos-agree">I have read and agreed to the Terms of Service</label>
+                <input type="checkbox" id="agree" name="tos-agree" onChange={checkHandler}></input><br/>
+                <label htmlFor="tos-agree">I have read and agreed to the Privacy Policies</label>
+                <input type="checkbox" id="pp-agree" name="pp-agree" onChange={checkHandler}></input><br/>
+            </form>
+            <button className="btn btn-success d-none" id="submit" onClick={() => {
+              if (timeOut) closeTOS();
+              else {
+                setClicked(true);
+                id("alert-time").classList.remove("d-none");
+                id("agree").disabled = true;
+                id("pp-agree").disabled = true;
+                id("submit").disabled = true;
+              }
+            }}>Submit</button>
+            <div className="alert alert-danger d-none" id="alert-time" role="alert">
+              Come on! You can't possibly be reading the Terms of Service that quickly right? We have disabled the submit button. Try again in {seconds} seconds or around {(seconds / 60).toFixed(2)} minutes or around {(seconds / 60 / 60).toFixed(2)} hours!
+            </div>
+          </div>
         </div>
+
+        <div id="essay" className="d-none"></div>
       </main>
 
-      <footer></footer>
+      <footer>
+        <p>Copyrighted © 2021 - Toan Ly, Luke Dorsett, Ryan Muggett</p>
+      </footer>
     </div>
   );
 }
