@@ -9,7 +9,7 @@ app.get("/encrypted", cors(), (req, res) => {
 });
 
 app.get("/unencrypted", cors(), (req, res) => {
-  res.json({ "unecrypted": everything.unencrypted });
+  res.json({ "unencrypted": everything.unencrypted });
 });
 
 app.get("/tos", cors(), (req, res) => {
