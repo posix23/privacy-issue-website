@@ -8,7 +8,7 @@ function App() {
   let url = 'https://gentle-beach-11167.herokuapp.com/', timeOut = false;
 
   const [clicked, setClicked] = useState(false);
-  const [seconds, setSeconds] = useState(60*60);
+  const [seconds, setSeconds] = useState(60*30);
 
   // Run once at the start
   useEffect(() => {
