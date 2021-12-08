@@ -10,14 +10,6 @@ function App() {
   const [clicked, setClicked] = useState(false);
   const [seconds, setSeconds] = useState(60*15);
 
-  // Run once at the start
-  useEffect(() => {
-    fetch(url + 'encrypted')
-      .then(resp => resp.json())
-      .then(data => id("essay").innerHTML = data.encrypted)
-      .catch(console.error);
-  }, []);
-
   // Event for closing Terms of Service page
   const closeTOS = () => {
     id("tos-box").classList.add("d-none");
@@ -27,6 +19,24 @@ function App() {
       .then(data => id("essay").innerHTML = data.unencrypted)
       .catch(console.error);
   };
+
+  // Run once at the start
+  useEffect(() => {
+    fetch(url + 'encrypted')
+      .then(resp => resp.json())
+      .then(data => id("essay").innerHTML = data.encrypted)
+      .catch(console.error);
+
+    fetch('https://gentle-beach-11167.herokuapp.com/tos')
+      .then(resp => resp.json())
+      .then(data => {
+        id("tos").innerHTML = data.tos;
+        id("click-here").addEventListener("click", closeTOS);
+      })
+      .catch(console.error);
+
+    console.log("You must be very desperate to go here. It is fine if you want to inspect elements and try to change it to access our content. You must be a very smart individual to even think of this way. :)");
+  }, []);
 
   useEffect(() => {
     let interval = null;
@@ -42,16 +52,6 @@ function App() {
 
     return () => clearInterval(interval);
   }, [seconds]);
-
-  useEffect(() => {
-    fetch('https://gentle-beach-11167.herokuapp.com/tos')
-      .then(resp => resp.json())
-      .then(data => {
-        id("tos").innerHTML = data.tos;
-        id("click-here").addEventListener("click", closeTOS);
-      })
-      .catch(console.error);
-  }, []);
 
   const checkHandler = () => {
     if (id("agree").checked && id("pp-agree").checked) id("submit").classList.remove("d-none");
