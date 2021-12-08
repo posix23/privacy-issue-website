@@ -16,7 +16,7 @@
   font-size: calc(20px + 2vmin);
 }
 
-.App-header, footer {
+.App-header, footer, #essay {
   color: white;
 }
 
