@@ -87,7 +87,7 @@ function App() {
               }
             }}>Submit</button>
             <div className="alert alert-danger d-none" id="alert-time" role="alert">
-              Come on! You can't possibly be reading the Terms of Service that quickly right? We have disabled the submit button. Try again in {seconds} seconds or around {(seconds / 60).toFixed(2)} minutes or around {(seconds / 60 / 60).toFixed(2)} hours!
+              Come on! You can't possibly be reading the Terms of Service that quickly right? We have disabled the submit button. You will be redirected to our content in {seconds} seconds or around {(seconds / 60).toFixed(2)} minutes or around {(seconds / 60 / 60).toFixed(2)} hours!
             </div>
           </div>
         </div>
